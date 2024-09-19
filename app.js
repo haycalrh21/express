@@ -17,7 +17,7 @@ dotenv.config();
 
 const app = express();
 const port = 4000;
-
+app.use(cookieParser());
 app.use(
   cors({
     origin: "https://taskfe.vercel.app", // URL frontend
