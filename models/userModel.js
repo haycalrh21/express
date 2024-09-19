@@ -4,7 +4,7 @@ import validator from "validator";
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-	name: { type: String, required: true, unique: true },
+	name: { type: String, required: true },
 	email: {
 		type: String,
 		required: true,
@@ -20,6 +20,10 @@ userSchema.pre("save", async function (next) {
 	this.password = await bcrypt.hash(this.password, salt);
 	next();
 });
+
+userSchema.methods.comparePassword = async function (reqBody) {
+	return await bcrypt.compare(reqBody, this.password);
+};
 
 const User = mongoose.model("User", userSchema);
 export default User;
