@@ -18,7 +18,7 @@ const port = 4000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // URL frontend
+    origin: "https://taskfe.vercel.app", // URL frontend
     credentials: true, // Mengizinkan pengiriman cookie
   })
 );
