@@ -14,10 +14,10 @@ const createSendToken = (user, statusCode, res) => {
   // Set cookie with token
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict",
-    maxAge: 6 * 24 * 60 * 60 * 1000, // 6 days
-    path: "/", // Set path to root
+    secure: process.env.NODE_ENV === "production", // Atur ke false jika dalam pengembangan
+    sameSite: "Strict", // Atur ke "Lax" jika Anda mengalami masalah
+    maxAge: 6 * 24 * 60 * 60 * 1000, // 6 hari
+    path: "/", // Set path ke root
   });
 
   res.status(statusCode).json({
