@@ -9,6 +9,8 @@ import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
 import authRouter from "./routes/authRouter.js";
 import referenceRouter from "./routes/referenceRoute.js";
 import taskRouter from "./routes/taskRouter.js";
+import helmet from "helmet";
+import mongosanitize from "express-mongo-sanitize";
 
 import cookieParser from "cookie-parser";
 dotenv.config();
@@ -22,7 +24,8 @@ app.use(
     credentials: true, // Mengizinkan pengiriman cookie
   })
 );
-
+app.use(helmet());
+app.use(mongosanitize());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

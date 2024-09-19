@@ -8,5 +8,5 @@ import { protectMiddleware } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post("/create-reference", protectMiddleware, createReference);
-router.get("/references", protectMiddleware, getReference);
+router.get("/references", getReference);
 export default router;
